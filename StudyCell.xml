@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StudyCell name="Органическая клетка">
+	<learningSession> 
+	  <learningImage>
+	    <fileName>mycell.jpg</fileName>
+	  </learningImage>
+	  <learningImageElement name="Митохондрия" x="100" y="200" angle="45" r1="80" r2="65">
+	  	<description>
+	  	Двумембранная сферическая или эллипсоидная органелла диаметром обычно около 1 микрон. 
+	  	Характерна для большинства эукариотических клеток, как автотрофов (фотосинтезирующие растения), 
+	  	так и гетеротрофов (грибы, животные). 
+	  	</description>
+	  </learningImageElement>
+	  <learningImageElement name="Ядро" x="80" y="60" angle="70" r1="45" r2="35">
+	  	<description>
+	  	Клеточное ядро содержит молекулы ДНК, на которых записана генетическая информация организма. 
+	  	В ядре происходит репликация — удвоение молекул ДНК, а также транскрипция — синтез молекул 
+	  	РНК на матрице ДНК. В ядре же синтезированные молекулы РНК претерпевают некоторые модификации 
+	  	(например, в процессе сплайсинга из молекул матричной РНК исключаются незначащие, 
+	  	бессмысленные участки), после чего выходят в цитоплазму.
+	  	</description>
+	  </learningImageElement>
+	</learningSession> 
+	
+	<controlSession>
+		<question id="1">
+			<text>
+				Где происходит репликация - удвоение молекул ДНК?
+			</text>
+			<responseOptions>
+				<option correct="0">Митохондрия</option>
+				<option correct="1">Ядро</option>
+				<option correct="0">Лизосома</option>
+			</responseOptions>			
+		</question>
+		<question id="2">
+		<text>
+			Где происходит синтез АТФ — универсального носителя энергии?
+		</text>
+		<responseOptions>
+			<option correct="1">Митохондрия</option>
+			<option correct="0">Рибосома</option>
+			<option correct="0">Ядрышко</option>
+		</responseOptions>			
+		</question>
+		
+	</controlSession> 
+</StudyCell>

@@ -1,5 +1,7 @@
+import javax.swing.JFrame;
 
-public class ControlSession {
+
+public class ControlSession extends JFrame {
 	
 	Question questions;
 	 

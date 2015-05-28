@@ -4,8 +4,18 @@ import javax.swing.JFrame;
 public class ControlSession extends JFrame {
 	
 	Question questions;
-	 
+	
+	private void prepareGUI(){
+		this.setLayout(null);
+		this.setSize(1024, 768);
+		this.setTitle("Learning Session");
+		this.setLocationRelativeTo(null);
+		
+		this.setVisible(true);
+	}
 	public void  start(){
+		
+		prepareGUI();
 		
 	}
 	public void  finish(){

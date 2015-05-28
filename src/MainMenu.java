@@ -41,6 +41,7 @@ public class MainMenu extends JFrame{
 			btnControl.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent evt) {
 					System.out.println("Тестирование");
+					startControlSession();
 				}
 			});
 			add(btnControl);  
@@ -59,26 +60,34 @@ public class MainMenu extends JFrame{
 	}
 	
 	protected void about() {
-		 JDialog dialog = new JDialog(this, Dialog.ModalityType.APPLICATION_MODAL);
-	
-		dialog.setSize(400, 300);
-		dialog.setLayout(new FlowLayout());
-		dialog.setLocationRelativeTo(null);
-	    JLabel label1 = new JLabel();
+		   JDialog dialog = new JDialog(this, Dialog.ModalityType.APPLICATION_MODAL);
+		 
+		  dialog.setSize(640, 480);
+		  dialog.setLayout(new FlowLayout());
+		  dialog.setLocationRelativeTo(null);
 		    
-	    label1.setText("<html><h1>О программе</h1>");
-	   
-	    dialog.getContentPane().add(label1);
-	   
-	    dialog.setVisible(true);
-	}
+		   JLabel label = new JLabel();
+		      label.setText("<html><body><h1>О программе</h1><p>StudyCell - программа для изучения компонентов животной клетки. В режиме Обучение вы сможете изучить названия, "
+		              + "расположение, строение и функции компонентов клетки. В режиме тестирование вы сможете пройти тест и узнать насколько хорошо вы усвоили материал. "
+		              + "StudyCell - прекрасная возможность изучить одну из важнейших тем из курса биологии.</p></body></html>");
+
+		         JPanel panel = new JPanel(new BorderLayout());
+		         panel.add(label, BorderLayout.NORTH);
+		         panel.setPreferredSize(new Dimension(620, 460));
+		         dialog.add(panel);
+		         dialog.setVisible(true);
+		 }
 
 	protected void startLearningSession() {
 		LearningSession session = new LearningSession ();
 		session.start();
 		
 	}
-
+	
+	protected void startControlSession() {
+		ControlSession session = new ControlSession ();
+		session.start();
+	}
 	MainMenu () {
 
 		

@@ -33,6 +33,7 @@ public class MainMenu extends JFrame{
 					startLearningSession ();
 				}
 			});
+			btnStudy.setBackground(new java.awt.Color(254,232,153));
 			
 			add(btnStudy);
 

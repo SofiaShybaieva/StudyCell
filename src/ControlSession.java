@@ -8,7 +8,7 @@ public class ControlSession extends JFrame {
 	private void prepareGUI(){
 		this.setLayout(null);
 		this.setSize(1024, 768);
-		this.setTitle("Learning Session");
+		this.setTitle("Тест");
 		this.setLocationRelativeTo(null);
 		
 		this.setVisible(true);

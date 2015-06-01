@@ -3,6 +3,7 @@ import java.awt.*;
 import java.io.File;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,7 +21,9 @@ public class MainMenu extends JFrame{
 			this.setSize(350, 400);
 			this.setTitle("StudyCell");
 			this.setLocationRelativeTo(null);
+			
 			this.setVisible(true);
+			
 			
 			int x = 75;
 			int y = 20;
@@ -45,6 +48,7 @@ public class MainMenu extends JFrame{
 					startControlSession();
 				}
 			});
+			btnControl.setBackground(new java.awt.Color(194,252,167));
 			add(btnControl);  
 
 			Button btnAbout=new Button("О программе");  
@@ -55,7 +59,7 @@ public class MainMenu extends JFrame{
 					about();
 				}
 			});
-			
+			btnAbout.setBackground(new java.awt.Color(199,237,252));
 			add(btnAbout); 
 
 	}
@@ -67,9 +71,11 @@ public class MainMenu extends JFrame{
 		  dialog.setLayout(new FlowLayout());
 		  dialog.setLocationRelativeTo(null);
 		    
-		   JLabel label = new JLabel();
+		   JLabel label = new JLabel(new ImageIcon("images.jpg"));
+
+	        label.setLayout(new FlowLayout());
 		      label.setText("<html><body><h1>О программе</h1><p>StudyCell - программа для изучения компонентов животной клетки. В режиме Обучение вы сможете изучить названия, "
-		              + "расположение, строение и функции компонентов клетки. В режиме тестирование вы сможете пройти тест и узнать насколько хорошо вы усвоили материал. "
+		              + "ра=сположение, строение и функции компонентов клетки. В режиме тестирование вы сможете пройти тест и узнать насколько хорошо вы усвоили материал. "
 		              + "StudyCell - прекрасная возможность изучить одну из важнейших тем из курса биологии.</p></body></html>");
 
 		         JPanel panel = new JPanel(new BorderLayout());

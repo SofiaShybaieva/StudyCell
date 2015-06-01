@@ -24,7 +24,10 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 	LearningImage learningImage;
 	private Image image;
 	private File file;
-	private Ellipse2D.Double ellipse = new Ellipse2D.Double(100,100,50,25);
+	private Ellipse2D.Double ellipse = new Ellipse2D.Double(242,305,75,35);
+	private Ellipse2D.Double ellipse1 = new Ellipse2D.Double(202,398,75,35);
+	private Ellipse2D.Double ellipse2 = new Ellipse2D.Double(585,339,225,250);
+	private Ellipse2D.Double ellipse3 = new Ellipse2D.Double(390,260,60,60);
 	private JPanel panel;
 	private JLabel label;
 	
@@ -40,7 +43,7 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 	public void paint (Graphics g) {
 		super.paint(g);
 		g.drawImage(image, 0, 0, this);
-		g.drawOval((int)ellipse.x, (int) ellipse.y, (int)ellipse.width, (int)ellipse.height);
+		g.drawOval((int)ellipse3.x, (int) ellipse3.y, (int)ellipse3.width, (int)ellipse3.height);
 		panel.setVisible(true);
 		
 	}
@@ -51,7 +54,7 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 		this.setSize(1024, 768);
 		this.setTitle("Learning Session");
 		this.setLocationRelativeTo(null);
-		
+		this.setResizable(false);
 		this.setVisible(true);
 		this.file = new File("cell.jpg");
 		loadImage(file);
@@ -59,7 +62,7 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 		addMouseMotionListener(this);
 		
 		 label = new JLabel();
-	      label.setText("<html><body><h1>Rktnrf</h1></body></html>");
+	      //label.setText("<html><body><h1>fghjxmf</h1></body></html>");
 
 	         panel = new JPanel(new BorderLayout());
 	         panel.add(label, BorderLayout.NORTH);
@@ -130,12 +133,22 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 		int y = e.getPoint().y;
 		
 		
-		if (ellipse.contains(x, y)) {
-			label.setText("kjhgg");
-			System.out.println("");
+		if (ellipse.contains(x, y) || ellipse1.contains(x, y) || ellipse2.contains(x, y)) {
+			label.setText("Митохондрия");
+			//System.out.println("");
 		}
+		
 		else
 			label.setText("");
+		
+		if (ellipse2.contains(x, y)) {
+			label.setText("Ядро");
+			//System.out.println("");
+		}
+		if (ellipse3.contains(x, y)) {
+			label.setText("Лизосомы");
+			//System.out.println("");
+		}
 			
 			
 		

@@ -3,6 +3,7 @@ import java.awt.Button;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
@@ -43,7 +44,7 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 	public void paint (Graphics g) {
 		super.paint(g);
 		g.drawImage(image, 0, 0, this);
-		g.drawOval((int)ellipse3.x, (int) ellipse3.y, (int)ellipse3.width, (int)ellipse3.height);
+		//g.drawOval((int)ellipse3.x, (int) ellipse3.y, (int)ellipse3.width, (int)ellipse3.height);
 		panel.setVisible(true);
 		
 	}
@@ -88,35 +89,36 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 	public void mouseClicked(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
-		System.out.println("Mouse Clicked at X: " + x + " - Y: " + y);
+		
+		//System.out.println("Mouse Clicked at X: " + x + " - Y: " + y);
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
-		System.out.println("Mouse Entered frame at X: " + x + " - Y: " + y);
+		//System.out.println("Mouse Entered frame at X: " + x + " - Y: " + y);
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
-		System.out.println("Mouse Exited frame at X: " + x + " - Y: " + y);
+		//System.out.println("Mouse Exited frame at X: " + x + " - Y: " + y);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
-		System.out.println("Mouse Pressed at X: " + x + " - Y: " + y);
+		//System.out.println("Mouse Pressed at X: " + x + " - Y: " + y);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		int x = e.getX();
 		int y = e.getY();
-		System.out.println("Mouse Released at X: " + x + " - Y: " + y);
+		//System.out.println("Mouse Released at X: " + x + " - Y: " + y);
 	}
 
 	@Override
@@ -135,6 +137,8 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 		
 		if (ellipse.contains(x, y) || ellipse1.contains(x, y) || ellipse2.contains(x, y)) {
 			label.setText("Митохондрия");
+			String s = "Fantastic! All answers correct.";
+			JOptionPane.showMessageDialog(null, s, "StudyCell", JOptionPane.INFORMATION_MESSAGE);
 			//System.out.println("");
 		}
 		

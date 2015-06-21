@@ -1,12 +1,15 @@
 import java.awt.Button;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -25,12 +28,18 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 	LearningImage learningImage;
 	private Image image;
 	private File file;
-	private Ellipse2D.Double ellipse = new Ellipse2D.Double(242,305,75,35);
-	private Ellipse2D.Double ellipse1 = new Ellipse2D.Double(202,398,75,35);
-	private Ellipse2D.Double ellipse2 = new Ellipse2D.Double(585,339,225,250);
-	private Ellipse2D.Double ellipse3 = new Ellipse2D.Double(390,260,60,60);
+		
 	private JPanel panel;
 	private JLabel label;
+	
+	public LearningSession () {
+		learningImage = new LearningImage ();
+		learningImage.addElement ("Митохондрия","mit.jpg", 242,305,75,35);
+		learningImage.addElement ("Митохондрия","mit.jpg", 202,398,75,35);
+		learningImage.addElement ("Ядро","yadro.jpg", 585,340,225,250);
+		learningImage.addElement ("Лизосомы","lysosome.jpg", 390,260,60,60);
+		learningImage.addElement ("x4","mit.jpg", 517,539,100,50); 
+	}
 	
 	private void loadImage(File file) {
 		try {
@@ -45,6 +54,8 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 		super.paint(g);
 		g.drawImage(image, 0, 0, this);
 		//g.drawOval((int)ellipse3.x, (int) ellipse3.y, (int)ellipse3.width, (int)ellipse3.height);
+		//g.drawOval((int)ellipse2.x, (int) ellipse2.y, (int)ellipse2.width, (int)ellipse2.height);
+		g.drawOval((int)ellipse4.x, (int) ellipse4.y, (int)ellipse4.width, (int)ellipse4.height);
 		panel.setVisible(true);
 		
 	}
@@ -86,39 +97,68 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		int x = e.getX();
-		int y = e.getY();
-		
-		//System.out.println("Mouse Clicked at X: " + x + " - Y: " + y);
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		int x = e.getX();
-		int y = e.getY();
-		//System.out.println("Mouse Entered frame at X: " + x + " - Y: " + y);
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		int x = e.getX();
-		int y = e.getY();
-		//System.out.println("Mouse Exited frame at X: " + x + " - Y: " + y);
-	}
-
-	@Override
 	public void mousePressed(MouseEvent e) {
-		int x = e.getX();
-		int y = e.getY();
-		//System.out.println("Mouse Pressed at X: " + x + " - Y: " + y);
+		int x = e.getPoint().x;
+		int y = e.getPoint().y;
+		// finding the element with the hit
+		for (int i=0; i<this.learningImage.elements.size(); i++) {
+			LearningImageElement el = this.learningImage.elements.get(i);
+			if (el.contains(x,y)) {
+				displayDescription(el.name, el.image);
+			}
+		}
+		
 	}
 
+	private void displayDescription(String string, String image) {
+		String s = "";
+		if (string.compareTo("Митохондрия") == 0 ) {
+			s = "<h1>Митохондрия</h1> Митохо́ндрия — двумембранная сферическая или эллипсоидная органелла диаметром обычно около 1 микрон. Характерна для большинства эукариотических клеток, как автотрофов (фотосинтезирующие растения), так и гетеротрофов (грибы, животные). Энергетическая станция клетки; основная функция — окисление органических соединений и использование освобождающейся при их распаде энергии для генерации электрического потенциала, синтеза АТФ и термогенеза. Эти три процесса осуществляются за счёт движения электронов по электронно-транспортной цепи белков внутренней мембраны.Митохо́ндрия (от греч. μίτος — нить и χόνδρος — зёрнышко, крупинка) — двумембранная сферическая или эллипсоидная органелла диаметром обычно около 1 микрон. Характерна для большинства эукариотических клеток, как автотрофов (фотосинтезирующие растения), так и гетеротрофов (грибы, животные). Энергетическая станция клетки; основная функция — окисление органических соединений и использование освобождающейся при их распаде энергии для генерации электрического потенциала, синтеза АТФ и термогенеза. Эти три процесса осуществляются за счёт движения электронов по электронно-транспортной цепи белков внутренней мембраны.";
+		}
+		
+		if (string.compareTo("Ядро") == 0 ) {
+			s = "<h1>Ядро клетки</h1> Место хранения, воспроизведения и начальной реализации генетической информации, центр управления жизненными процессами клетки. Ядро состоит из поверхностного аппарата и ядерного матрикса. Поверхностный аппарат ядра состоит из двух мембран – внешней и внутренней. В пространстве между внутренней и внешней мембраной находятся поры, которые их соединяют. Поверхностный аппарат ядра соединен с мембранами ЭПС. Ядерный матрикс состоит из кариоплазмы, одного-двух ядрышек – рибонуклеопротеидных комплексов и ниток хроматина. Кариоплазма напоминает цитоплазму. В ней содержатся фибриллы, которые формируют внутренний скелет, который соединяет ядрышки, нитки хроматина, поры.  ";
+		}
+		
+		if (string.compareTo("Лизосомы") == 0 ) {
+			s = "<h1>Лизосомы</h1>Лизосо́ма  — окружённый мембраной клеточный органоид, в полости которого поддерживается кислая среда и находится множество растворимых гидролитических ферментов. Лизосома отвечает за внутриклеточное переваривание макромолекул, в том числе при аутофагии; лизосома способна к секреции своего содержимого в процессе лизосомного экзоцитоза; также лизосома участвует в некоторых внутриклеточных сигнальных путях, связанных с метаболизмом и ростом клетки. Лизосома является одним из видов везикул и относится к эндомембранной системе клетки. Разные виды лизосом могут рассматриваться как отдельные клеточные компартменты.";
+		}
+		
+		 JDialog dialog = new JDialog(this, Dialog.ModalityType.APPLICATION_MODAL);
+		 
+		  dialog.setSize(640, 480);
+		  dialog.setLayout(new FlowLayout());
+		  dialog.setLocationRelativeTo(null);
+		    
+		   JLabel label = new JLabel(new ImageIcon(image));
+		   String text = String.format("<html><body>%s</body></html>", s);
+		   label.setLayout(new FlowLayout());
+	       label.setText(text);
+
+		         JPanel panel = new JPanel(new BorderLayout());
+		         panel.add(label, BorderLayout.NORTH);
+		         panel.setPreferredSize(new Dimension(620, 460));
+		         dialog.add(panel);
+		         dialog.setVisible(true);
+	}
+
+
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		int x = e.getX();
-		int y = e.getY();
-		//System.out.println("Mouse Released at X: " + x + " - Y: " + y);
+	public void mouseMoved(MouseEvent e) {
+		System.out.println(e.getPoint().x + ", " + e.getPoint().y);
+		
+		int x = e.getPoint().x;
+		int y = e.getPoint().y;
+		
+		// finding the element with the hit
+		for (int i=0; i<this.learningImage.elements.size(); i++) {
+			LearningImageElement el = this.learningImage.elements.get(i);
+			if (el.contains(x,y)) {
+				label.setText(el.name);
+			}
+		}
+		
+		
 	}
 
 	@Override
@@ -128,33 +168,26 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 	}
 
 	@Override
-	public void mouseMoved(MouseEvent e) {
-		System.out.println(e.getPoint().x + ", " + e.getPoint().y);
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
 		
-		int x = e.getPoint().x;
-		int y = e.getPoint().y;
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
 		
-		if (ellipse.contains(x, y) || ellipse1.contains(x, y) || ellipse2.contains(x, y)) {
-			label.setText("Митохондрия");
-			String s = "Fantastic! All answers correct.";
-			JOptionPane.showMessageDialog(null, s, "StudyCell", JOptionPane.INFORMATION_MESSAGE);
-			//System.out.println("");
-		}
-		
-		else
-			label.setText("");
-		
-		if (ellipse2.contains(x, y)) {
-			label.setText("Ядро");
-			//System.out.println("");
-		}
-		if (ellipse3.contains(x, y)) {
-			label.setText("Лизосомы");
-			//System.out.println("");
-		}
-			
-			
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 

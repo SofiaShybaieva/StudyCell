@@ -26,7 +26,7 @@ public class ControlSession extends JFrame {
 	
 	private void prepareGUI(){
 		this.setLayout(new FlowLayout(FlowLayout.LEADING, 20, 20));
-		this.setSize(1024, 600);
+		this.setSize(700, 400);
 		this.setTitle("Тест");
 		this.setLocationRelativeTo(null);
 		
@@ -58,8 +58,11 @@ public class ControlSession extends JFrame {
 		panel3.setPreferredSize(new Dimension(620, 30));
 		
 		Button btnBack=new Button("  Back  ");
+		btnBack.setBackground(new java.awt.Color(254,232,153));
 		Button btnForward=new Button("  Forward  ");
+		btnForward.setBackground(new java.awt.Color(194,252,167));
 		Button btnFinish=new Button("  Finish  ");
+		btnFinish.setBackground(new java.awt.Color(199,237,252));
 		
 		btnForward.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,10 +94,10 @@ public class ControlSession extends JFrame {
 	}
 	
 	private void prepareQuestions() {
-		Question question = new Question ("Question1", new String[]{"q","r","t"}, 3);
+		Question question = new Question ("Основная функция митохондрии?", new String[]{"синтез белка","синтез ДНК","синтез АТФ"}, 3);
 		questions[0] = question;
 		
-		question = new Question ("Question2", new String[]{"a","s","d"}, 2);
+		question = new Question ("Диаметр митохондрии?", new String[]{"3 микрон","1 микрон","2 микрон"}, 2);
 		questions[1] = question;
 	
 		// initialize answers with empty responses
@@ -108,6 +111,9 @@ public class ControlSession extends JFrame {
 		
 	}
 	public void  finish() {
+		// store last response in the answers
+		this.answers[this.currentQuestion] = this.getResponseNumber();
+		
 		// check the responses with the right answers
 		int wrongAnswers = 0;
 		for (int i=0; i<this.maxQuestions; i++) {

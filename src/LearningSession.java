@@ -53,9 +53,13 @@ public class LearningSession extends JFrame implements MouseListener, MouseMotio
 	public void paint (Graphics g) {
 		super.paint(g);
 		g.drawImage(image, 0, 0, this);
-		//g.drawOval((int)ellipse3.x, (int) ellipse3.y, (int)ellipse3.width, (int)ellipse3.height);
-		//g.drawOval((int)ellipse2.x, (int) ellipse2.y, (int)ellipse2.width, (int)ellipse2.height);
-		g.drawOval((int)ellipse4.x, (int) ellipse4.y, (int)ellipse4.width, (int)ellipse4.height);
+
+		int i = 0;
+		g.drawOval(this.learningImage.elements.get(i).x, 
+				this.learningImage.elements.get(i).y, 
+				this.learningImage.elements.get(i).w, 
+				this.learningImage.elements.get(i).h);
+
 		panel.setVisible(true);
 		
 	}
